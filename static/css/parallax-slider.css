@@ -1,0 +1,115 @@
+/* PARALLAX SLIDER - SETTINGS */
+#slides {
+position: relative;
+}
+
+#slides .slides-container div{
+		background-position:center top;
+		background-attachment: fixed;
+	}
+	#slides .slides-navigation .next, #slides .slides-navigation .prev {
+	position: absolute;
+	top: 50%;
+	z-index: 100;
+	}
+		#slides .slides-navigation .next {
+		margin-top: 30px;
+		right: 10px;
+		}
+			#slides .slides-navigation .prev {
+			margin-top: 30px;
+		left: 10px;
+		}
+		#slides .slides-navigation i {
+		color: #FFF;
+		font-size: 60px;
+		line-height: 60px;
+		margin-top: -30px;
+		opacity: 0.5;
+		}
+				#slides .slides-navigation i:hover {
+		opacity: 1;
+		}
+		
+.slides-pagination {
+  position: absolute;
+  z-index: 3;
+  bottom: 12px;
+  text-align: center;
+  width: 100%;
+}
+.slides-pagination a {
+  border: 2px solid #FFF;
+  border-radius: 15px;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 3px;
+  overflow: hidden;
+  color: transparent !important;
+}
+.slides-pagination a.current {
+  background: #FFF;
+}
+
+/* PARALLAX SLIDER - CAPTIONS */
+#slides .caption {
+  font-family: 'Open Sans', sans-serif;
+position: relative;
+top: 50%;
+margin-top: -160px;
+height: 480px;
+
+z-index: 1000;
+}
+#slides .caption h1 {
+  font-family: 'Open Sans', sans-serif;
+font-size: 100px;
+}
+#slides .caption h2 {
+  font-family: 'Open Sans', sans-serif;
+font-size: 60px;
+}
+#slides .caption h3 {
+  font-family: 'Open Sans', sans-serif;
+font-size: 40px;
+}
+#slides .caption h4 {
+  font-family: 'Open Sans', sans-serif;
+font-size: 24px;
+}
+#slides .caption .btn {
+margin-right: 4px;
+margin-left: 4px;
+}
+/* CAPTIONS SCREENSIZE LESS THAN 992x */
+@media (max-width: 992px) {
+#slides .caption h1 {
+font-size: 60px;
+}
+#slides .caption h2 {
+font-size: 40px;
+}
+#slides .caption h3 {
+font-size: 30px;
+}
+#slides .caption h4 {
+font-size: 18px;
+}
+}
+/* CAPTIONS SCREENSIZE LESS THAN 768px */
+@media (max-width: 768px) {
+#slides .caption h1 {
+font-size: 40px;
+}
+#slides .caption h2 {
+font-size: 30px;
+}
+#slides .caption h3 {
+font-size: 20px;
+}
+#slides .caption h4 {
+font-size: 14px;
+}
+}

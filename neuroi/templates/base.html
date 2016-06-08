@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>{% block titulo %}{% endblock %}</title>
+<!-- ================================ -->
+<!-- ========== CSS INCLUDES ========== -->
+<!-- ================================ -->
+<link href="{{STATIC_URL}}css/bootstrap.css" media="screen" rel="stylesheet" type="text/css">
+<link href="{{STATIC_URL}}css/buttons.css" media="screen" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="{{STATIC_URL}}css/icomoon.css" media="screen" rel="stylesheet" type="text/css">
+<link href="{{STATIC_URL}}css/parallax-slider.css" media="screen" rel="stylesheet" type="text/css">
+<link href="{{STATIC_URL}}css/prettyPhoto.css" media="screen" rel="stylesheet" type="text/css">
+<link id="header-switch" href="{{STATIC_URL}}css/headers/light.css" media="screen" rel="stylesheet" type="text/css">
+<link href="{{STATIC_URL}}css/animate.css" media="screen" rel="stylesheet" type="text/css">
+<link href="{{STATIC_URL}}css/theme-styles.css" media="screen" rel="stylesheet" type="text/css">
+<link id="style-switch" href="{{STATIC_URL}}css/color-schemes/default.css" media="screen" rel="stylesheet" type="text/css">
+{% block extra_files %}{% endblock %}
+</head>
+
+<body data-offset="85" data-spy="scroll" data-target=".navbar">
+
+<!-- ===== PAGE LOADER GRAPHIC ===== -->
+<div id="pageloader">
+	<div class="loader-img">
+		<img alt="loader" src="{{STATIC_URL}}img/loader.gif"/>
+	</div>
+</div>
+
+
+<!-- ======================================== -->
+<!-- ============ START TOP STICKY MENU ========== -->
+<!-- ======================================== -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="container">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu">
+		<i class="fa fa-bars fa-fw"></i>
+		</button>
+		<a class="navbar-brand weight-900" href="#home"><img alt="" id="logo" src="{{STATIC_URL}}img/logo.png"></a>
+	</div>
+	<!-- Collect the nav links, formms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="main-menu">
+		<ul class="nav navbar-nav navbar-right">
+			<li><a class="scrollto" href="#home">Home</a></li>
+			<li><a class="scrollto" href="#bio">Acerca de Mí</a></li>
+			<li><a class="scrollto" href="#about">Estudios Neurofisiológicos</a></li>
+            <li><a class="scrollto" href="#video">Videos</a></li>
+            <li><a class="scrollto" href="#blog">Notas</a></li>
+            <li><a class="scrollto" href="#agenda">Agenda</a></li>
+            <li><a class="scrollto" href="#contact">Donde Encontrarme</a></li>
+			<li><a class="scrollto" href="#turnos">Solicitar Turno</a></li>
+			<li>
+			<div class="social-icons">
+				<a target="_blank" href="https://www.facebook.com/Dr.LucasNicolasRoss"><i class="im-facebook"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/lucas-nicolas-ross-93703855"><i class="im-linkedin"></i></a>
+			</div>
+			</li>
+		</ul>
+	</div>
+	<!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
+</nav>
+<!-- ======================================== -->
+<!-- ============ END TOP STICKY MENU =========== -->
+<!-- ======================================== -->
+
+
+{% block contenido %}{% endblock %}
+
+
+<!-- ================================================== -->
+<!-- =============== START FOOTER SECTION ================ -->
+<!-- ================================================== -->
+<div class="footer">
+	<div class="container">
+		<div class="row text-center">
+			<div class="col-md-6 text-left">
+                Copyright ©2016 Neurología Infantil -
+                <a href="http://webstudios.com.ar">Diseño Web</a> por <a href="http://webstudios.com.ar">WebStudios</a>
+			</div>
+			<div class="col-md-6 text-right">
+				<div class="social-icons">
+					<a target="_blank" href="https://www.facebook.com/Dr.LucasNicolasRoss"><i class="im-facebook"></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/lucas-nicolas-ross-93703855"><i class="im-linkedin"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ======================================== -->
+<!-- =============== END FOOTER ============== -->
+<!-- ======================================== -->
+
+
+<!-- ================================================== -->
+<!-- ============= START SCROLL TO TOP SCRIPT ============= -->
+<!-- ================================================== -->
+<div class="scrollup">
+	<a class="scrolltotop" href="#"><i class="fa fa-angle-double-up"></i></a>
+</div>
+<!-- ================================================== -->
+<!-- ============== END SCROLL TO TOP SCRIPT ============== -->
+<!-- ================================================== -->
+
+
+<!-- ===================================== -->
+<!-- ========== START JQUERY SCRIPTS ========== -->
+<!-- ===================================== -->
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/stellar.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/counter.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.superslides.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/animation-engine.js"></script>
+<!--<script type="text/javascript" src="{{STATIC_URL}}js/validation.js"></script>-->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/google.map-settings.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/style-switcher.js"></script>
+<script type="text/javascript" src="{{STATIC_URL}}js/theme-scripts.js"></script>
+{% block extra_files_bottom %}{% endblock %}
+<!-- ==================================== -->
+<!-- ========== END JQUERY SCRIPTS ========== -->
+<!-- ==================================== -->
+</body>
+</html>

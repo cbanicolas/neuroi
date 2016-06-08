@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lucas Nicolas Ross - Neurologia Infantil y Neurofisiología Pediatrica{% endblock titulo %}
+
+{% block extra_files %}{% endblock extra_files %}
+
+{% block contenido %}
+
+    <div class="fullwidth-section" id="bread-crumb" style="background-color: #F5F5F5">
+        <!-- Breadcrumb -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <h1 class="weight-800 uppercase">{{ nota.titulo }}</h1>
+                    </div>
+                    <div class="pull-right">
+                        <ol class="breadcrumb">
+                            <li><a href="{% url "home" %}">Home</a></li>
+                            <li class="active">Notas</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog Post -->
+
+    <div class="fullwidth-section" style="padding-top: 60px">
+        <div class="container">
+            <div class="row">
+                <!-- Post Section -->
+                <div class="col-md-12">
+                    <!-- Post Picture -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img class="img-responsive" alt="" src="img/pictures/office.jpg">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-6"><h5 style="margin-top: 20px">por Lucas Ross el {{ nota.fecha }}</h5></div>
+                        <div class="col-md-6 text-right"></div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <hr/>
+                            {{ nota.nota|safe }}
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Sidebar Section -->
+
+            </div>
+        </div>
+    </div>
+
+{% endblock contenido %}

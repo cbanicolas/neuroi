@@ -1,0 +1,154 @@
+.btn-primary,
+a.btn-primary {
+  background-color: #9b59b6;
+}
+a.btn-outline.btn-primary, .btn-outline.btn-primary {
+border-color: #9b59b6;
+color: #9b59b6;
+}
+a.btn-outline.btn-primary:hover, a.btn-outline.btn-primary.active, a.btn-outline.btn-primary:active, a.btn-outline.btn-primary:focus,
+.btn-outline.btn-primary:hover, .btn-outline.btn-primary.active, .btn-outline.btn-primary:active, .btn-outline.btn-primary:focus {
+background-color: #9b59b6;
+}
+a.btn-outline.btn-white:hover, a.btn-outline.btn-white.active, a.btn-outline.btn-white:active, a.btn-outline.btn-white:focus,
+.btn-outline.btn-white:hover, .btn-outline.btn-white.active, .btn-outline.btn-white:active, .btn-outline.btn-white:focus {
+color: #9b59b6;
+}
+a:active, a:hover {
+color: #9b59b6;
+}
+.color-primary {
+color: #9b59b6 !important;
+}
+.bg-primary {
+background-color: #9b59b6 !important;
+}
+.border-primary {
+border-color: #9b59b6 !important;
+}
+h1,
+.h1 {
+  color: #9b59b6;
+}
+.img-outline {
+border: 1px solid #9b59b6;
+}
+.img-hover i:hover {
+color: #9b59b6;
+}
+.blog-hover {
+border: 3px solid #9b59b6;
+}
+.blog-hover-buttons a:hover {
+color: #9b59b6;
+}
+#blog-posts h2 a, #blog-posts h2 a:visited, #blog-posts-masonry h4 a, #blog-posts-masonry h4 a:visited, #blog h4 a, #blog h4 a:visited {
+color: #9b59b6;
+}
+#comments .avatar {
+border: 1px solid #9b59b6;
+}
+#sidebar .widget_calendar #wp-calendar caption {
+background-color: #9b59b6;
+}
+#sidebar .widget_calendar #wp-calendar th {
+background-color: #9b59b6;
+border-right: 1px solid #9b59b6;
+border-left: 1px solid #9b59b6;
+border-top: 1px solid #9b59b6;
+}
+#sidebar .widget_calendar #wp-calendar #prev a:hover, #sidebar .widget_calendar #wp-calendar #next a:hover {
+color: #9b59b6;
+}
+.scrollup i:hover {
+background-color: #9b59b6;
+}
+.team-img-wrapper {
+border: 1px solid #9b59b6;
+}
+.team-img-wrapper-hover {
+  border: 3px solid #9b59b6;
+}
+.social-icons i:hover {
+border: 1px solid #9b59b6;
+color: #9b59b6;
+}
+#accordion .panel a.selected .panel-heading {
+background-color:#9b59b6;
+}
+.nav-tabs > li.active > a,.nav-tabs > li.active > a:hover,.nav-tabs > li.active > a:focus {
+color:#9b59b6;
+}
+.nav-tabs > li.active > a {
+border-top:1px solid #9b59b6;
+}
+.nav-tabs#tabs > li.active > a {
+border-top:1px solid #9b59b6;
+}
+.owl-theme .owl-controls .owl-page span{
+	border: 1px solid #9b59b6;
+}
+.owl-theme .owl-controls .owl-page.active span,
+.owl-theme .owl-controls.clickable .owl-page:hover span{
+	background-color: #9b59b6;
+}
+#portfolio h4 {
+color: #9b59b6;
+}
+.portfolio-hover {
+border: 3px solid #9b59b6;
+}
+.portfolio-hover-buttons a:hover {
+color: #9b59b6;
+}
+.testimonial-slider .carousel-indicators li {
+border: 1px solid #9b59b6;
+}
+.testimonial-slider .carousel-indicators li.active {
+background-color: #9b59b6;
+}
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+color: #9b59b6;
+}
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+background-color: #9b59b6;
+border-color: #9b59b6;
+}
+.pager li > a, .pager li > span {
+    border: 1px solid #9b59b6;
+	color: #9b59b6;
+}
+.pager li > a:hover, .pager li > span {
+    background-color: #9b59b6;
+    border: 1px solid #9b59b6;
+}
+.progress-bar {
+  background-color: #9b59b6;
+}
+.footer .social-icons i:hover {
+border: 1px solid #9b59b6;
+color: #9b59b6;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+color: #9b59b6;
+border-color: #9b59b6;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li.active > a, .navbar-default .navbar-nav > li:hover > a, .navbar-default .navbar-nav > li.active > a:hover {
+color: #9b59b6;
+border: 1px solid #9b59b6;
+}
+.navbar-default .navbar-nav > li.active > a:focus {
+color: #9b59b6;
+border: 1px solid #9b59b6;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+color: #9b59b6;
+border: 1px solid #9b59b6;
+}
+.dropdown-menu > li:hover > a, .dropdown-menu > li > a:hover, .dropdown-menu > .active > a, .dropdown-menu > .active > a:focus, .dropdown-menu > .active > a:hover {
+    color: #9b59b6 !important;
+}
+.navbar .social-icons i:hover {
+color: #9b59b6;
+border: 1px solid #9b59b6;
+}

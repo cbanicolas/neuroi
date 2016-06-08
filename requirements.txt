@@ -1,0 +1,10 @@
+Django==1.9.7
+-e git://github.com/sandlbn/django-bootstrap-calendar.git@86c87c98380fc98b1d2d32d225f9a8dbd38e07a6#egg=django_bootstrap_calendar
+django-ckeditor==5.0.3
+django-debug-toolbar==1.4
+django-embed-video==1.1.0
+jsmin==2.2.1
+Pillow==3.2.0
+psycopg2==2.6.1
+requests==2.10.0
+sqlparse==0.1.19

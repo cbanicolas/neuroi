@@ -1,0 +1,597 @@
+{% extends 'base.html' %}
+{% load embed_video_tags %}
+{% load bootstrap_calendar %}
+
+{% block titulo %}Lucas Nicolas Ross - Neurologia Infantil y Neurofisiología Pediatrica{% endblock titulo %}
+
+{% block extra_files %}{% bootstrap_calendar_css %}{% endblock extra_files %}
+{% block extra_files_bottom %}
+    {% bootstrap_calendar_js language="es-ES" %}
+    {% bootstrap_calendar_init language="es-ES" %}
+{% endblock %}
+
+{% block contenido %}
+
+{% if messages %}
+    {% for message in messages %}
+        <script type="text/javascript">alert('{{ message }}');</script>
+    {% endfor %}
+{% endif %}
+
+<!-- ======================================== -->
+<!-- ============ START MODAL LOGIN PACIENTES ========== -->
+<!-- ======================================== -->
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <br>
+            <div class="bs-example bs-example-tabs">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active"><a href="#signin" data-toggle="tab">Acceso para pacientes</a></li>
+                    <!--<li class=""><a href="#why" data-toggle="tab">Why?</a></li>-->
+                </ul>
+            </div>
+            <div class="modal-body">
+                <div id="myTabContent" class="tab-content">
+                    <!--
+                    <div class="tab-pane fade in" id="why">
+                        <p>We need this information so that you can receive access to the site and its content. Rest assured your information will not be sold, traded, or given to anyone.</p>
+                        <p></p><br> Please contact <a mailto:href="JoeSixPack@Sixpacksrus.com"></a>JoeSixPack@Sixpacksrus.com</a> for any other inquiries.</p>
+                    </div>
+                    -->
+                    <div class="tab-pane fade active in" id="signin">
+                        <form name="login_user" id="login_user" class="form-horizontal" action="{% url "login_user" %}" method="post">
+                            {% csrf_token %}
+                            <fieldset>
+                                <!-- Sign In Form -->
+                                <!-- Text input-->
+                                <div class="control-group">
+                                    <label class="control-label" for="userid">Usuario:</label>
+                                    <div class="controls">
+                                        <input required="" id="username" name="username" type="text" class="form-control" placeholder="Usuario" class="input-medium">
+                                    </div>
+                                </div>
+
+                                <!-- Password input-->
+                                <div class="control-group">
+                                    <label class="control-label" for="passwordinput">Password:</label>
+                                    <div class="controls">
+                                        <input required="" id="password" name="password" class="form-control" type="password" placeholder="********" class="input-medium">
+                                    </div>
+                                </div>
+
+                                <!-- Multiple Checkboxes (inline) -->
+                                <div class="control-group">
+                                    <label class="control-label" for="remember_me"></label>
+                                    <div class="controls">
+                                        <label class="checkbox inline" for="rememberme-0">
+                                            <input type="checkbox" name="remember_me" id="rememberme-0" value="Remember me">
+                                            Recordarme
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Button -->
+                                <div class="control-group">
+                                    <label class="control-label" for="signin"></label>
+                                    <div class="controls">
+                                        <button type="submit" id="signin" name="signin" class="btn btn-success">Entrar</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <center>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======================================== -->
+<!-- ============ END MODAL LOGIN PACIENTES ========== -->
+<!-- ======================================== -->
+
+
+<section id="home">
+<!-- ======================================= -->
+<!-- ========== START PARALLAX SLIDER ========== -->
+<!-- ======================================== -->
+<!-- SlidesJS Required: Start Slides -->
+<!-- The container is used to define the width of the slideshow -->
+<div id="slides">
+	<div class="slides-container">
+		<div class="parallax" style="background-image:url({{STATIC_URL}}img/pictures/slider2.jpg)" data-stellar-background-ratio="0.2">
+			<div class="img-overlay-solid" style="background-color:rgba(0,0,0,0.3);"></div>
+			<div class="caption container">
+			<h2 class="weight-700 color-white">¡Bienvenido!</h2>
+			<h4 class="weight-400 color-white">Estimado paciente, aquí puedes acceder a tu cuenta virtual para gestionar tus informes y pedidos u observar mi agenda.</h4>
+			<br/>
+            {% if request.user.is_active and not request.user.is_staff %}
+                <a class="btn btn-primary scrollto"  href="{% url "pacientes" %}">Ingreso a cuenta del paciente</a>
+                {% else %}
+                <a class="btn btn-primary scrollto"  href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Ingreso a cuenta del paciente</a>
+            {% endif %}
+            <a class="btn btn-white btn-outline scrollto" href="#agenda">Agenda</a>
+			</div>
+		</div>
+		<div class="parallax" style="background-image:url({{STATIC_URL}}img/pictures/slider1.jpg)" data-stellar-background-ratio="0.2">
+			<div class="img-overlay-solid" style="background-color:rgba(0,0,0,0.3);"></div>
+			<div class="caption container">
+			<h2 class="weight-700 color-white">¡Bienvenido!</h2>
+			<h4 class="weight-400 color-white">Estimado paciente, aquí puedes acceder a tu cuenta virtual para gestionar tus informes y pedidos u observar mi agenda.</h4>
+			<br/>
+            {% if request.user.is_active and not request.user.is_staff %}
+                <a class="btn btn-primary scrollto"  href="{% url "pacientes" %}">Ingreso a cuenta del paciente</a>
+                {% else %}
+                <a class="btn btn-primary scrollto"  href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Ingreso a cuenta del paciente</a>
+            {% endif %}
+            <a class="btn btn-white btn-outline scrollto" href="#agenda">Agenda</a>
+			</div>
+		</div>
+	</div>
+	<nav class="slides-navigation">
+	<a href="#" class="next"><i class="fa fa-angle-right"></i></a>
+	<a href="#" class="prev"><i class="fa fa-angle-left"></i></a>
+	</nav>
+</div>
+<!-- End SlidesJS Required: Start Slides -->
+<!-- ======================================= -->
+<!-- ========== END PARALLAX SLIDER ========== -->
+<!-- ======================================== -->
+
+
+<section id="bio">
+<div class="fullwidth-section half-padding" style="background-color: #F7F7F7;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-md-offset-1">
+				<img alt="" src="{{STATIC_URL}}img/team/dentist.jpg" class="img-responsive img-center rounded">
+			</div>
+			<div class="col-md-7 col-md-offset-1">
+				<h2 class="color-primary">Neurología infantil<br>Neurofisiología pediátrica</h2>
+                <!--
+				<h4 class="weight-400">Médico Cirujano recibido en la Universidad Nacional de Córdoba, con formaciones:
+                    Pediátrica (Hospital Infantil de Córdoba), Neurológica infantil (Hospital Garrahan) y Neurofisiológica
+                    pediátrica (Hospital Garrahan).</h4>-->
+                <h4><a target="_blank" href="">Observa mi curriculum vitae aquí.</a></h4>
+                <h4><a target="_blank" href="https://www.linkedin.com/in/lucas-nicolas-ross-93703855">Observa mi cuenta de Linkedin aquí.</a></h4>
+				<h5 class="">Dr. Lucas Nicolas Ross</h5>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+
+
+<!-- ======================================== -->
+<!-- =========== START ESTUDIOS SECTION ============ -->
+<!-- ======================================== -->
+<section id="about">
+<div class="fullwidth-section half-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="weight-700 kill-top-margin uppercase">Estudios Neurofisiológicos</h1>
+				<h4 class="weight-400">A continuación se detalla una lista de los diversos estudios que realizo. Para
+                solicitar presupuesto o turno para alguno de los mismos puedes utilizar el siguiente formulario haciendo
+                click <a cla href="#turnos" style="font-weight: bold">aquí.</a> No olvides especificar que estudio necesitas.
+                </h4>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="fullwidth-section">
+	<div class="parallax" style="background-image: url({{STATIC_URL}}img/pictures/estudios.jpg)" data-stellar-background-ratio="0.2">
+	</div>
+	<div class="img-overlay-solid" style="background-color:rgba(0,0,0,0.4);">
+	</div>
+	<div class="container color-white">
+		<!-- ========== START ICON FEATURES BOX ========== -->
+		<div class="row">
+			<div class="col-md-4 ae">
+				<div class="icon-feature-horizontal">
+					<div class="icon">
+						<i class="im-wand color-primary"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700 color-white">ELECTROENCEFALOGRAMA COMPUTALIZADO</h4>
+                        <!--
+						<ul>
+                            <li>Electroencefalograma de Vigilia</li>
+                            <li>Electroencefalograma de Sueno</li>
+                            <li>Electroencefalograma de 1hrs</li>
+                            <li>Electroencefalograma de 3hrs</li>
+                            <li>Electroencefalograma de 6hrs</li>
+                            <li>Electroencefalograma Nocturno</li>
+                        </ul>
+                        -->
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ae" data-delay="250">
+				<div class="icon-feature-horizontal">
+					<div class="icon">
+						<i class="im-support color-primary"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700 color-white">VIDEOELECTROENCEFALOGRAMA</h4>
+                        <!--
+						<ul>
+                            <li>Video electroencefalograma de 6hrs</li>
+                            <li>Video electroencefalograma de 12hrs</li>
+                            <li>Video electroencefalograma de 24hrs</li>
+                            <li>Video electroencefalograma de 48hrs o más</li>
+                        </ul>
+                        -->
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ae" data-delay="500">
+				<div class="icon-feature-horizontal">
+					<div class="icon">
+						<i class="im-eye color-primary"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700 color-white">MAPEO CEREBRAL COMPUTALIZADO 3D</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 ae">
+				<div class="icon-feature-horizontal">
+					<div class="icon">
+						<i class="im-leaf color-primary"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700 color-white">POLISOMNOGRAFÍA</h4>
+                        <!--
+                        <ul>
+                            <li>Polisomnografía Simple</li>
+                            <li>Polisomnografía con Oximetría</li>
+                            <li>Polisomnografía con Oximetría y Capnografía</li>
+                            <li>Polisomnografía para Setup de CPAP</li>
+                        </ul>
+                        -->
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ae" data-delay="250">
+				<div class="icon-feature-horizontal">
+					<div class="icon">
+						<i class="im-droplet color-primary"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700 color-white">POTENCIALES EVOCADOS</h4>
+                        <!--
+						<ul>
+                            <li>Potenciales Evocados Auditivos</li>
+                            <li>Potenciales Evocados Visuales</li>
+                            <li>Electroretinograma</li>
+                            <li>Potenciales Evocados Somatosensitivos</li>
+                        </ul>
+                        -->
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ae" data-delay="500">
+				<div class="icon-feature-horizontal">
+					<div class="icon">
+						<i class="im-menu color-primary"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700 color-white">MONITOREO INTRAOPERATORIO NEUROFISIOLÓGICO</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END ICON FEATURES BOX -->
+	</div>
+</div>
+</section>
+<!-- ======================================== -->
+<!-- =========== END ESTUDIOS SECTION ============= -->
+<!-- ======================================== -->
+
+
+<!-- ======================================== -->
+<!-- =========== START VIDEO SECTION ============= -->
+<!-- ======================================== -->
+<section id="video">
+<div class="fullwidth-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class=" kill-top-margin uppercase">Videos</h1>
+				<h4 class="weight-400">Los últimos videos acerca de neurología infantil:</h4>
+			</div>
+		</div>
+
+		<div class="row">
+        {% for item in videos %}
+            {% video item.video as my_video %}
+			<div class="col-md-4">
+				<div class="blog-img-wrapper">
+					<div class="blog-hover">
+						<div class="blog-hover-buttons">
+							<a href="{{ my_video.url }}" target="_blank"><i class="im-redo2"></i></a>
+						</div>
+					</div>
+					<div class="img-thumb" style="background-image: url('{{ my_video.thumbnail }}');"></div>
+				</div>
+				<div class="blog-text">
+					<h4><a href="">{{ item.titulo }}</a></h4>
+					<h6>por Lucas Roos el {{ item.fecha }}</h6>
+					<p>{{ item.descripcion|truncatewords:30|striptags|safe }}</p>
+					<h6 class="pull-left"></h6>
+					<h6 class="pull-right"><a href="{{ my_video.url }}">Ver más <i class="fa fa-angle-double-right"></i></a></h6>
+					<div class="clearfix">
+					</div>
+				</div>
+			</div>
+            {% endvideo %}
+            {% if forloop.counter|divisibleby:3 %}
+                </div>
+                <div class="row">
+            {% endif %}
+        {% endfor %}
+        </div>
+
+	</div>
+</div>
+</section>
+<!-- ======================================== -->
+<!-- =========== END VIDEO SECTION ============= -->
+<!-- ======================================== -->
+
+
+<!-- ======================================== -->
+<!-- =========== START BLOG SECTION ============= -->
+<!-- ======================================== -->
+<section id="blog">
+<div class="fullwidth-section">
+	<div class="container">
+		<div class="row" style="margin-bottom: 60px;">
+			<div class="col-md-12">
+				<h1 class=" kill-top-margin uppercase">Notas</h1>
+				<h4 class="weight-400">Las últimas notas publicadas de mi autoría:</h4>
+			</div>
+		</div>
+        <div class="row">
+        {% for item in notas %}
+			<div class="col-md-4">
+				<div class="blog-img-wrapper">
+					<div class="blog-hover">
+						<div class="blog-hover-buttons">
+							<a href="{% url "nota" tit_slug=item.slug %}"><i class="im-redo2"></i></a>
+						</div>
+					</div>
+					<div class="img-thumb" style="background-image: url('{{ MEDIA_URL }}{{ item.imagen }}');">
+					</div>
+				</div>
+				<div class="blog-text">
+					<h4><a href="{% url "nota" tit_slug=item.slug %}">{{ item.titulo }}</a></h4>
+					<h6>por Lucas Roos el {{ item.fecha }}</h6>
+					<p>{{ item.nota|truncatewords:30|striptags|safe }}</p>
+					<h6 class="pull-left"></h6>
+					<h6 class="pull-right"><a href="{% url "nota" tit_slug=item.slug %}">Leer más <i class="fa fa-angle-double-right"></i></a></h6>
+					<div class="clearfix">
+					</div>
+				</div>
+			</div>
+            {% if forloop.counter|divisibleby:3 %}
+                </div>
+                <div class="row">
+            {% endif %}
+        {% endfor %}
+        </div>
+	</div>
+</div>
+</section>
+<!-- ======================================== -->
+<!-- =========== END BLOG SECTION ============= -->
+<!-- ======================================== -->
+
+
+<!-- ======================================== -->
+<!-- =========== START AGENDA SECTION ============= -->
+<!-- ======================================== -->
+<section id="agenda">
+    <div class="fullwidth-section half-padding">
+	    <div class="container">
+            {% bootstrap_controls 'optional-css-classes' %}
+            {% bootstrap_calendar 'optional-css-classes' %}
+        </div>
+    </div>
+</section>
+<!-- ======================================== -->
+<!-- =========== END AGENDA SECTION ============= -->
+<!-- ======================================== -->
+
+
+<!-- ======================================== -->
+<!-- =========== START CONTACT SECTION ============= -->
+<!-- ======================================== -->
+<section id="contact">
+<!-- ======================================== -->
+<!-- ============= START MAP DISPLAY ============= -->
+<!-- ======================================== -->
+<div class="fullwidth-section half-padding">
+	<div class="container">
+		<div class="row" style="margin-bottom: 20px">
+			<div class="col-md-8 col-md-offset-2 text-center">
+				<h1 class=" kill-top-margin uppercase">Donde Encontrarme</h1>
+				<h4 class="weight-400"></h4>
+			</div>
+		</div>
+	</div>
+	<div class="map-wrapper">
+		<div id="map-canvas"></div>
+	</div>
+
+    <div class="container">
+		<div class="row" style="margin-top: 40px;">
+            <div class="col-md-3">
+				<div class="icon-feature-horizontal-sm">
+					<div class="icon">
+						<i class="fa fa-location-arrow"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700">Córdoba</h4>
+						<p>
+							<a href="#contact" onclick="goToMarker(1)">Centro de Neurología Infantil</a><br>
+                            <a href="#contact" onclick="goToMarker(2)">Hospital Privado de Córdoba</a><br>
+                            <a href="#contact" onclick="goToMarker(3)">Hospital Raúl Ferreyra</a><br>
+                            <a href="#contact" onclick="goToMarker(4)">IPEPGO SRL</a><br>
+						</p>
+					</div>
+				</div>
+			</div>
+
+            <div class="col-md-3">
+				<div class="icon-feature-horizontal-sm">
+					<div class="icon">
+						<i class="fa fa-location-arrow"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700">Jesus María</h4>
+						<p>
+							<a href="#contact" onclick="goToMarker(5)">Sanatorio Caroya SRL</a><br>
+						</p>
+					</div>
+				</div>
+			</div>
+
+            <div class="col-md-3">
+				<div class="icon-feature-horizontal-sm">
+					<div class="icon">
+						<i class="fa fa-location-arrow"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700">Arroyito</h4>
+						<p>
+							<a href="#contact" onclick="goToMarker(6)">Clínica del Niño Dr. Costilla</a><br>
+						</p>
+					</div>
+				</div>
+			</div>
+
+            <div class="col-md-3">
+				<div class="icon-feature-horizontal-sm">
+					<div class="icon">
+						<i class="fa fa-location-arrow"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700">Villa María</h4>
+						<p>
+							<a href="#contact" onclick="goToMarker(7)">Clínica de Especialidades</a><br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <div class="row">
+            <div class="col-md-3">
+				<div class="icon-feature-horizontal-sm">
+					<div class="icon">
+						<i class="fa fa-location-arrow"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700">La Rioja</h4>
+						<p>
+							<a href="#contact" onclick="goToMarker(8)">Centro Médico Vivir</a><br>
+						</p>
+					</div>
+				</div>
+			</div>
+
+            <div class="col-md-3">
+				<div class="icon-feature-horizontal-sm">
+					<div class="icon">
+						<i class="fa fa-location-arrow"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700">Santiago del Estero</h4>
+						<p>
+							<a href="#contact" onclick="goToMarker(9)">IRIS SRL</a><br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="container">
+		<div class="row" style="margin-top: 40px;">
+
+            <div class="col-md-4">
+				<div class="icon-feature-horizontal-sm">
+					<div class="icon">
+						<i class="im-mail2 color-primary ae"></i>
+					</div>
+					<div class="content">
+						<h4 class="uppercase weight-700">Contáctame</h4>
+						<p>
+							<a href="mailto:support@creativelycoded.com">info@neurologiainfantil.com.ar</a><br/>
+							P: 555-555-5555<br/>
+							M: 444-444-4444
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-8" id="turnos">
+				<h4 class="uppercase weight-700">Solicitar Turno o realizar consultas.</h4>
+				<form name="contact" id="contact" action="{% url "contacto" %}" method="post" role="form">
+                    {% csrf_token %}
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Tu nombre</label>
+								<input class="form-control" name="name" id="name" placeholder="" type="text" required />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Tu email</label>
+								<input class="form-control" name="email" id="email" placeholder="" type="email" required/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Mensaje</label>
+								<textarea class="form-control" name="message" id="message" placeholder="" rows="4" required></textarea>
+							</div>
+							<div class="text-center">
+								<br/>
+								<button class="btn btn-primary btn-round" type="submit">Enviar </button><br>
+								<div id="error">
+									Please fill out all required fields
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- ======================================== -->
+<!-- ================ END MAP DISPLAY =========== -->
+<!-- ======================================== -->
+</section>
+<!-- ======================================== -->
+<!-- =========== END CONTACT SECTION ============= -->
+<!-- ======================================== -->
+
+{% endblock contenido %}
